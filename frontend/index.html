@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto Final - Sistemas Operativos</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; line-height: 1.6; }
+        .card { border: 1px solid #ccc; padding: 20px; border-radius: 8px; max-width: 500px; }
+        .status { margin-top: 20px; padding: 10px; background: #f4f4f4; border-left: 5px solid #333; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Proyecto Final: Sistemas Operativos</h1>
+        <p><strong>Estudiante:</strong> Felipe Ramirez</p>
+        <p><strong>Código:</strong> 2478061</p>
+        <p><strong>Asignatura:</strong> Sistemas Operativos</p>
+        
+        <div class="status" id="api-status">
+            Conectando al backend...
+        </div>
+    </div>
+
+    <script>
+        fetch('http://localhost:5000')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('api-status').innerHTML = 
+                    `<strong>Estado del Backend:</strong> ${data.mensaje} <br> <strong>Status:</strong> ${data.status}`;
+            })
+            .catch(error => {
+                document.getElementById('api-status').innerHTML = "Error al conectar con el backend.";
+            });
+    </script>
+</body>
+</html>
