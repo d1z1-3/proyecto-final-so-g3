@@ -14,6 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: tu-usuario/backend:latest # ¡IMPORTANTE! Cambia 'tu-usuario' por tu nombre de usuario de DockerHub si tienes imagen subida, o simplemente pon 'backend:latest' si la tienes local.
+        image: mi-backend:v1
+        imagePullPolicy: Never
         ports:
         - containerPort: 5000
