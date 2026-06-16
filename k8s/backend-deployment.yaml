@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: tu-usuario/backend:latest # ¡IMPORTANTE! Cambia 'tu-usuario' por tu nombre de usuario de DockerHub si tienes imagen subida, o simplemente pon 'backend:latest' si la tienes local.
+        ports:
+        - containerPort: 5000
