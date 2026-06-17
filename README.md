@@ -4,7 +4,7 @@ Evelin Xiomara Astudillo Pedroza ()
 Roony Alejandro Ausecha Lourido (Roony20-2026)
 Jhojan Andrés Martínez Peñafiel (Jhojan9343)
 Felipe Ramírez Peñafiel (d1z1-3)
-Paola Andrea Torres Guerra ()
+Paola Andrea Torres Guerra (paolatorres-png)
 
 ## Descripción
 Proyecto enfocado en la implementación de contenedores y despliegue en Kubernetes (k8s), estructurado para el entorno de sistemas operativos.
