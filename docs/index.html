@@ -1,1 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Final - Sistemas Operativos (Grupo 3)</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 40px auto; 
+            max-width: 900px; 
+            line-height: 1.7; 
+            color: #333; 
+            background-color: #f5f7fa; 
+        }
+        header, section, footer { 
+            background: #fff; 
+            padding: 30px; 
+            border-radius: 8px; 
+            margin-bottom: 25px; 
+            border: 1px solid #e1e8ed; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02); 
+        }
+        nav { 
+            margin: 20px 0; 
+            padding: 10px 0; 
+            border-top: 1px solid #eee; 
+            border-bottom: 1px solid #eee; 
+        }
+        nav a { 
+            margin-right: 20px; 
+            text-decoration: none; 
+            color: #0066cc; 
+            font-weight: bold; 
+        }
+        nav a:hover { text-decoration: underline; }
+        h1, h2, h3 { color: #1a2a3a; }
+        h1 { margin-top: 0; }
+        .member-block { margin-bottom: 15px; }
+        .evidence-img { 
+            max-width: 100%; 
+            height: auto; 
+            display: block; 
+            margin: 15px 0; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+        }
+        pre { 
+            background: #2d3748; 
+            color: #f7fafc; 
+            padding: 15px; 
+            border-radius: 6px; 
+            overflow-x: auto; 
+            font-family: 'Courier New', Courier, monospace; 
+        }
+        code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+        pre code { background: none; padding: 0; color: inherit; }
+    </style>
+</head>
+<body>
 
+    <header id="home">
+        <h1>Proyecto Final: Sistemas Operativos</h1>
+        <p><strong>Asignatura:</strong> Sistemas Operativos</p>
+        <p><strong>Docente:</strong> Mg. José Alexander Castañeda Muñoz</p>
+        <p><strong>Institución:</strong> Universidad del Valle</p>
+        <p><strong>Descripción:</strong> Documentación oficial del proyecto de infraestructura tecnológica para el Grupo 3. Integra la configuración de entornos virtuales independientes, servicios desacoplados en contenedores mediante Docker Engine y la orquestación automatizada de alta disponibilidad con Kubernetes Minikube.</p>
+        
+        <p><strong>Video Demostrativo del Proyecto:</strong> 
+            <a href="AQUÍ_VA_EL_ENLACE_DE_SU_VIDEO_DE_YOUTUBE" target="_blank" style="color: #e53e3e; font-weight: bold;">
+                🎬 Ver sustentación en YouTube (Máximo 10 minutos)
+            </a>
+        </p>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#equipo">Equipo</a>
+            <a href="#componentes">Componentes</a>
+            <a href="#conclusiones">Conclusiones</a>
+        </nav>
+    </header>
+
+    <section id="equipo">
+        <h2>Equipo de Trabajo (Grupo 3)</h2>
+        
+        <div class="member-block">
+            <p><strong>Estudiante:</strong> Evelin Xiomara Astudillo Pedroza</p>
+            <p><strong>Código:</strong> 2477871</p>
+        </div>
+        
+        <div class="member-block">
+            <p><strong>Estudiante:</strong> Roony Alejandro Ausecha Lourido</p>
+            <p><strong>Código:</strong> 2477957</p>
+        </div>
+        
+        <div class="member-block">
+            <p><strong>Estudiante:</strong> Jhojan Andrés Martínez Peñafiel</p>
+            <p><strong>Código:</strong> 2478060</p>
+        </div>
+        
+        <div class="member-block">
+            <p><strong>Estudiante:</strong> Felipe Ramírez Peñafiel</p>
+            <p><strong>Código:</strong> 2478061</p>
+        </div>
+        
+        <div class="member-block">
+            <p><strong>Estudiante:</strong> Paola Andrea Torres Guerra</p>
+            <p><strong>Código:</strong> 2478101</p>
+        </div>
+    </section>
+
+    <section id="componentes">
+        <h2>Desarrollo de los Componentes Técnicos</h2>
+        <hr>
+
+        <h3>Componente 1: Virtualización con Linux</h3>
+        <p>Despliegue de dos entornos virtuales independientes utilizando la distribución asignada (<strong>Fedora 41</strong>).</p>
+        <ul>
+            <li><strong>VM 1:</strong> Fedora 41 (Entorno Gráfico de Escritorio).</li>
+            <li><strong>VM 2:</strong> Fedora 41 Server (Entorno de Consola Pura).</li>
+            <li><strong>Particionamiento:</strong> Configuración manual del disco con las áreas requeridas: <code>/</code>, <code>swap</code> y <code>/home</code>.</li>
+            <li><strong>Red:</strong> Enlace inter-VM mediante adaptador de red interna o puente, habilitando el acceso remoto seguro vía SSH de la VM gráfica a la de consola.</li>
+        </ul>
+        
+        <h4>Evidencias de la Entrega 1 (Capturas):</h4>
+        <p><em>Particionamiento manual y asignación de discos:</em></p>
+        <img src="img/particionamiento.png" alt="Captura de particionamiento manual Fedora 41" class="evidence-img">
+        
+        <p><em>Prueba de conectividad inter-VM y acceso SSH funcional:</em></p>
+        <pre><code>ssh usuario_servidor@ip_maquina_consola</code></pre>
+        <img src="img/ssh_evidencia.png" alt="Captura de pantalla acceso SSH verificado" class="evidence-img">
+
+        <hr>
+
+        <h3>Componente 2: Contenedores Docker</h3>
+        <p>Aislamiento de servicios locales mediante la instalación y aprovisionamiento de Docker Engine en la máquina virtual gráfica.</p>
+        <ul>
+            <li><strong>Frontend:</strong> Servidor web Nginx que aloja la estructura estática de este sitio web de documentación.</li>
+            <li><strong>Backend:</strong> Servidor básico HTTP en Python configurado y expuesto en el puerto <code>5000</code>.</li>
+            <li><strong>Orquestación:</strong> Automatización del despliegue unificado y gestión de volúmenes persistentes con Docker Compose utilizando como imagen base <code>fedora:41</code>.</li>
+        </ul>
+        
+        <h4>Evidencias de la Entrega 1 (Capturas):</h4>
+        <p><em>Despliegue exitoso de contenedores mediante Compose:</em></p>
+        <pre><code>docker compose up -d</code></pre>
+        <img src="img/docker_compose.png" alt="Captura de contenedores corriendo en Docker" class="evidence-img">
+        
+        <p><em>Validación de los servicios en el navegador web:</em></p>
+        <img src="img/navegador_servicios.png" alt="Captura del navegador accediendo al Frontend y Backend" class="evidence-img">
+
+        <hr>
+
+        <h3>Componente 3: Orquestación con Kubernetes</h3>
+        <p>Configuración del cluster local de un solo nodo mediante Minikube en el S.O. gráfico de Fedora para la gestión automatizada de las cargas de trabajo.</p>
+        <ul>
+            <li><strong>Manifiestos:</strong> Definición lógica de la arquitectura en archivos YAML (<code>Deployment</code> y <code>Service</code> tipo NodePort).</li>
+            <li><strong>Réplicas:</strong> Despliegue inicial de la imagen oficial de Nginx parametrizada con 2 réplicas y escalado manual verificado a 3 réplicas operativas.</li>
+        </ul>
+        
+        <h4>Evidencias de la Entrega 2 (Capturas):</h4>
+        <p><em>Verificación del estado de los Pods y el Servicio expuesto:</em></p>
+        <pre><code>kubectl get pods
+kubectl get svc</code></pre>
+        <img src="img/kubernetes_pods.png" alt="Captura de kubectl mostrando el estado de los Pods" class="evidence-img">
+
+        <p><em>Escalado de la infraestructura a 3 réplicas activas:</em></p>
+        <pre><code>kubectl scale deployment/nombre-deployment --replicas=3</code></pre>
+        <img src="img/kubernetes_escalado.png" alt="Captura que evidencia las 3 réplicas activas" class="evidence-img">
+    </section>
+
+    <section id="conclusiones">
+        <h2>Conclusiones del Proyecto</h2>
+        <ul>
+            <li>El particionamiento manual asegura un aislamiento lógico del almacenamiento, impidiendo que desbordamientos en directorios de usuarios (<code>/home</code>) comprometan la estabilidad del sistema raíz (<code>/</code>) en Fedora 41.</li>
+            <li>Docker Engine permite la ejecución eficiente de microservicios sin la penalización de rendimiento de la virtualización completa, garantizando entornos idénticos de desarrollo tanto para el servidor Python como para Nginx.</li>
+            <li>Kubernetes (a través de Minikube) automatiza la tolerancia a fallos de la capa web mediante políticas de replicación, facilitando pautas de escalado horizontal rápido ante variaciones de carga de trabajo.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p style="text-align: center; margin: 0; color: #7f8c8d; font-size: 0.9em;">
+            &copy; 2026 - Universidad del Valle | Grupo 3 (Sistemas Operativos). 
+            Repositorio disponible en <a href="https://github.com/d1z1-3/proyecto-final-so-g3" target="_blank" style="color: #0066cc; text-decoration: none;">GitHub</a>.
+        </p>
+    </footer>
+</body>
+</html>
