@@ -8,11 +8,13 @@
         /* Variables de color institucionales y modernas */
         :root {
             --primary-color: #8a151b; /* Rojo Univalle */
-            --secondary-color: #2c3e50; /* Gris oscuro / Azulado */
+            --primary-hover: #b81d24; /* Rojo más vivo para interacciones */
+            --secondary-color: #1a252f; /* Gris muy oscuro / Azulado */
             --accent-color: #d4af37; /* Dorado */
-            --bg-color: #f8f9fa;
-            --text-color: #333333;
-            --terminal-bg: #1e1e1e;
+            --bg-color: #f3f4f6; /* Fondo gris claro más suave */
+            --card-bg: #ffffff;
+            --text-color: #2d3748; /* Texto principal más suave (no negro puro) */
+            --terminal-bg: #0f172a; /* Fondo pizarra oscuro para la terminal */
         }
 
         /* Reseteo básico y tipografía */
@@ -28,17 +30,22 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-color);
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px); /* Sutil patrón de puntos en el fondo */
+            background-size: 20px 20px;
         }
 
-        /* Barra de navegación flotante */
+        /* Barra de navegación flotante moderna con efecto Glassmorphism */
         nav {
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px); /* Efecto despulido/esmerilado */
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 15px 0;
+            padding: 18px 0;
             text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         nav a {
@@ -47,13 +54,31 @@
             color: var(--secondary-color);
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
             transition: color 0.3s ease;
+        }
+
+        /* Animación de línea inferior para los enlaces del menú */
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
         }
 
         nav a:hover {
             color: var(--primary-color);
+        }
+
+        nav a:hover::after {
+            width: 100%; /* La línea se expande de izquierda a derecha */
         }
 
         /* Contenedor principal */
@@ -63,58 +88,85 @@
             padding: 20px;
         }
 
-        /* Encabezado Principal */
+        /* Encabezado Principal Estilo Premium */
         header {
-            background: linear-gradient(135deg, var(--secondary-color), #1a252f);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #0f172a 100%);
             color: white;
-            padding: 50px 30px;
-            border-radius: 10px;
-            margin-top: 20px;
+            padding: 60px 40px;
+            border-radius: 16px;
+            margin-top: 30px;
             margin-bottom: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             position: relative;
             overflow: hidden;
+            border-left: 6px solid var(--primary-color); /* Acento Univalle en el borde */
+        }
+
+        /* Efecto de destello de fondo en el header */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(138,21,27,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             margin-bottom: 15px;
             border-bottom: 3px solid var(--accent-color);
             display: inline-block;
             padding-bottom: 5px;
+            letter-spacing: -0.5px;
         }
 
         header p {
             font-size: 1.1rem;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             opacity: 0.9;
         }
 
+        /* Botón de YouTube interactivo y llamativo */
         .video-btn {
             display: inline-block;
-            background-color: #e53e3e;
+            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
             color: white;
-            padding: 12px 24px;
-            border-radius: 5px;
+            padding: 14px 28px;
+            border-radius: 30px; /* Bordes completamente redondeados */
             text-decoration: none;
             font-weight: bold;
-            margin-top: 20px;
-            transition: transform 0.2s, background-color 0.2s;
+            margin-top: 25px;
+            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote elástico */
         }
 
         .video-btn:hover {
-            background-color: #c53030;
-            transform: translateY(-2px);
+            transform: translateY(-4px) scale(1.03); /* Sube y se agranda ligeramente */
+            box-shadow: 0 7px 20px rgba(229, 62, 62, 0.6);
+        }
+
+        .video-btn:active {
+            transform: translateY(-1px); /* Efecto de hundimiento al clickear */
         }
 
         /* Secciones Generales */
         section {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
-            border: 1px solid #eaeaea;
+            background: var(--card-bg);
+            padding: 45px;
+            border-radius: 16px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Sutil efecto flotante al pasar el mouse por encima de una sección entera */
+        section:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
         }
 
         h2 {
@@ -123,96 +175,121 @@
             margin-bottom: 25px;
             display: flex;
             align-items: center;
+            letter-spacing: -0.5px;
         }
 
         h3 {
             color: var(--secondary-color);
             font-size: 1.4rem;
-            margin-top: 30px;
+            margin-top: 35px;
             margin-bottom: 15px;
-            padding-left: 10px;
+            padding-left: 12px;
             border-left: 4px solid var(--accent-color);
         }
 
         hr {
             border: 0;
             height: 1px;
-            background: #eee;
-            margin: 30px 0;
+            background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.1), rgba(0,0,0,0)); /* Degradado elegante */
+            margin: 35px 0;
         }
 
         /* Grid para el Equipo de Trabajo */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
+        /* Tarjetas de integrantes mejoradas */
         .member-card {
-            background: var(--bg-color);
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid var(--secondary-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            border-top: 4px solid var(--secondary-color); /* Cambiado a la parte superior */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            border-left: 1px solid rgba(0,0,0,0.05);
+            border-right: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .member-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-left-color: var(--primary-color);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(138, 21, 27, 0.1); /* Sombra con un toque del rojo Univalle */
+            border-top-color: var(--primary-color);
         }
 
-        /* Estilos para Evidencias y Código */
+        /* Listas con estilo moderno */
         ul {
             padding-left: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            list-style-type: none; /* Quitamos los puntos por defecto */
         }
 
         li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        /* Añadimos un marcador personalizado rojo en lugar del punto estándar */
+        li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
         }
 
         .evidence-container {
-            background: #fdfdfd;
-            border: 1px solid #e1e8ed;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
         }
 
+        /* Efecto Zoom elegante para las capturas de pantalla */
         .evidence-img {
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 15px auto;
-            border-radius: 6px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            cursor: zoom-in; /* Indica interactividad */
         }
 
         .evidence-img:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.15);
         }
 
-        /* Estilo tipo ventana de terminal para el código */
+        /* Estilo Ventana de Terminal Pro (Estilo macOS / VS Code) */
         .terminal-window {
             background: var(--terminal-bg);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            margin: 15px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .terminal-header {
-            background: #333;
-            padding: 8px 15px;
+            background: #1e293b;
+            padding: 12px 20px;
             display: flex;
             align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .terminal-dots {
             display: flex;
-            gap: 6px;
+            gap: 8px;
         }
 
         .dot {
@@ -225,39 +302,51 @@
         .dot.green { background: #27c93f; }
 
         pre {
-            color: #a9b7c6;
-            padding: 15px;
+            color: #38bdf8; /* Color azul celeste moderno para los comandos */
+            padding: 20px;
             overflow-x: auto;
-            font-family: 'Fira Code', 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
+            font-family: 'Fira Code', Consolas, Monaco, monospace;
+            font-size: 0.9rem;
+            background: #0f172a;
         }
 
+        /* Código inline más limpio */
         code.inline {
-            background: #e2e8f0;
-            color: #d53f8c;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: monospace;
+            background: #ffebeb;
+            color: var(--primary-color);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-family: Consolas, monospace;
+            font-size: 0.9rem;
             font-weight: 600;
+            border: 1px solid rgba(138, 21, 27, 0.1);
         }
 
-        /* Footer */
+        /* Footer Modernizado */
         footer {
-            background: var(--secondary-color);
-            color: white;
+            background: linear-gradient(to top, #0f172a, var(--secondary-color));
+            color: rgba(255, 255, 255, 0.8);
             text-align: center;
-            padding: 25px;
-            margin-top: 40px;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        footer p {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
         }
 
         footer a {
             color: var(--accent-color);
             text-decoration: none;
             font-weight: bold;
+            position: relative;
+            transition: color 0.3s;
         }
         
         footer a:hover {
-            text-decoration: underline;
+            color: #ffffff;
         }
     </style>
 </head>
@@ -276,7 +365,7 @@
             <p><strong>Asignatura:</strong> Sistemas Operativos 750001C</p>
             <p><strong>Docente:</strong> Mg. José Alexander Castañeda Muñoz</p>
             <p><strong>Institución:</strong> Universidad del Valle</p>
-            <p style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 15px;">
+            <p style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 15px;">
                 <strong>Descripción:</strong> Documentación oficial del proyecto de infraestructura tecnológica para el Grupo 3. Integra la configuración de entornos virtuales independientes, servicios desacoplados en contenedores mediante Docker Engine y la orquestación automatizada de alta disponibilidad con Kubernetes Minikube.
             </p>
             
@@ -290,23 +379,23 @@
             <div class="team-grid">
                 <div class="member-card">
                     <p><strong>Felipe Ramírez Peñafiel</strong></p>
-                    <p>Código: <code class="inline">2478061</code></p>
+                    <p style="margin-top: 8px;">Código: <code class="inline">2478061</code></p>
                 </div>
                 <div class="member-card">
                     <p><strong>Jhojan Andrés Martínez Peñafiel</strong></p>
-                    <p>Código: <code class="inline">2478060</code></p>
+                    <p style="margin-top: 8px;">Código: <code class="inline">2478060</code></p>
                 </div>
                 <div class="member-card">
                     <p><strong>Evelin Xiomara Astudillo Pedroza</strong></p>
-                    <p>Código: <code class="inline">2477871</code></p>
+                    <p style="margin-top: 8px;">Código: <code class="inline">2477871</code></p>
                 </div>
                 <div class="member-card">
                     <p><strong>Roony Alejandro Ausecha Lourido</strong></p>
-                    <p>Código: <code class="inline">2477957</code></p>
+                    <p style="margin-top: 8px;">Código: <code class="inline">2477957</code></p>
                 </div>
                 <div class="member-card">
                     <p><strong>Paola Andrea Torres Guerra</strong></p>
-                    <p>Código: <code class="inline">2478101</code></p>
+                    <p style="margin-top: 8px;">Código: <code class="inline">2478101</code></p>
                 </div>
             </div>
         </section>
