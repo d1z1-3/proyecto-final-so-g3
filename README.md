@@ -1,4 +1,4 @@
-## INTEGRANTES DEL PROYECTO:
+## Integrantes del Proyecto:
 
 * Evelin Xiomara Astudillo Pedroza ()
 * Roony Alejandro Ausecha Lourido (Roony20-2026)
