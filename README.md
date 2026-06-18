@@ -1,6 +1,6 @@
 ## Integrantes del Proyecto:
 
-* Evelin Xiomara Astudillo Pedroza ()
+* Evelin Xiomara Astudillo Pedroza (XiomaraAP)
 * Roony Alejandro Ausecha Lourido (Roony20-2026)
 * Jhojan Andrés Martínez Peñafiel (Jhojan9343)
 * Felipe Ramírez Peñafiel (d1z1-3)
