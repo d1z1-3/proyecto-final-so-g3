@@ -128,28 +128,32 @@
             opacity: 0.9;
         }
 
-        /* Botón de YouTube interactivo */
-        .video-btn {
+        /* Botones de acción */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .action-btn {
             display: inline-block;
-            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
-            color: white;
             padding: 14px 28px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 25px;
-            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: white;
         }
 
-        .video-btn:hover {
+        .action-btn:hover {
             transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 7px 20px rgba(229, 62, 62, 0.6);
         }
 
-        .video-btn:active {
-            transform: translateY(-1px);
-        }
+        .video-btn { background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%); }
+        .repo-btn { background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); }
+        .diagram-btn { background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%); color: #000; }
 
         /* Secciones Generales */
         section {
@@ -388,16 +392,12 @@
             <p style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 15px;">
                 <strong>Introducción:</strong> Documentación oficial del proyecto de infraestructura tecnológica desarrollado por el Grupo 3. Integra la configuración de entornos virtuales independientes, servicios desacoplados en contenedores mediante Docker Engine y la orquestación automatizada de alta disponibilidad con Kubernetes Minikube.
             </p>
-            <p style="margin-top: 10px;">
-                <strong>Objetivos:</strong>
-                <span style="display:block; margin-top:5px; padding-left:15px;">• Diseñar e implementar entornos de servidores aislados bajo la distribución Fedora 44.</span>
-                <span style="display:block; padding-left:15px;">• Modularizar las capas del Frontend (Nginx) y Backend (Python) usando tecnologías de empaquetado Docker.</span>
-                <span style="display:block; padding-left:15px;">• Garantizar la tolerancia a fallos mediante el aprovisionamiento de políticas de replicación y balanceo en un clúster local de Kubernetes.</span>
-            </p>
             
-            <a href="AQUÍ_VA_EL_ENLACE_DE_SU_VIDEO_DE_YOUTUBE" target="_blank" class="video-btn">
-                ▶ Ver Sustentación Técnica en YouTube
-            </a>
+            <div class="btn-group">
+                <a href="AQUÍ_VA_EL_ENLACE_DE_SU_VIDEO_DE_YOUTUBE" target="_blank" class="action-btn video-btn">▶ YouTube</a>
+                <a href="AQUÍ_VA_EL_ENLACE_DE_SU_REPOSITORIO" target="_blank" class="action-btn repo-btn">📁 Repositorio</a>
+                <a href="AQUÍ_VA_EL_ENLACE_DE_SU_DIAGRAMA" target="_blank" class="action-btn diagram-btn">📊 Arquitectura</a>
+            </div>
         </header>
 
         <section id="equipo">
