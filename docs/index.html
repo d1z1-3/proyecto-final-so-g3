@@ -212,7 +212,7 @@
             background: #ffffff;
             padding: 25px;
             border-radius: 12px;
-            border-top: 4px solid var(--secondary-color); /* Cambiado a la parte superior */
+            border-top: 4px solid var(--secondary-color);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
             border-left: 1px solid rgba(0,0,0,0.05);
             border-right: 1px solid rgba(0,0,0,0.05);
@@ -379,25 +379,24 @@
 <body>
 
     <nav>
-        <a href="#home">Inicio</a>
+        <a href="#home">Home</a>
         <a href="#equipo">Equipo</a>
-        <a href="#componentes">Componentes Técnicos</a>
+        <a href="#componentes">Componentes</a>
         <a href="#conclusiones">Conclusiones</a>
     </nav>
 
     <div class="container">
-        <!-- SECCIÓN 1: Home: introducción y objetivos -->
         <header id="home">
-            <h1>Arquitectura Cloud y Sistemas Distribuidos</h1>
+            <h1>Home</h1>
             <p><strong>Asignatura:</strong> Sistemas Operativos 750001C</p>
             <p><strong>Docente:</strong> Mg. José Alexander Castañeda Muñoz</p>
             <p><strong>Institución:</strong> Universidad del Valle</p>
             <p style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 15px;">
-                <strong>Introducción:</strong> Documentación oficial del proyecto de infraestructura tecnológica desarrollado por el Grupo 3. Integra la configuración de entornos virtuales independientes, servicios desacoplados en contenedores mediante Docker Engine y la orquestación automatizada de alta disponibilidad con Kubernetes Minikube.
+                <strong>introducción:</strong> Documentación oficial del proyecto de infraestructura tecnológica desarrollado por el Grupo 3. Integra la configuración de entornos virtuales independientes, servicios desacoplados en contenedores mediante Docker Engine y la orquestación automatizada de alta disponibilidad con Kubernetes Minikube.
             </p>
             <p style="margin-top: 10px;">
-                <strong>Objetivos del Proyecto:</strong>
-                <span style="display:block; margin-top:5px; padding-left:15px;">• Diseñar e implementar entornos de servidores aislados bajo la distribución Fedora 44.</span>
+                <strong>objetivos:</strong>
+                <span style="display:block; margin-top:5px; padding-left:15px;">• Diseñar e implementar entornos de servidores aislados bajo la distribución Fedora 41.</span>
                 <span style="display:block; padding-left:15px;">• Modularizar las capas del Frontend (Nginx) y Backend (Python) usando tecnologías de empaquetado Docker.</span>
                 <span style="display:block; padding-left:15px;">• Garantizar la tolerancia a fallos mediante el aprovisionamiento de políticas de replicación y balanceo en un clúster local de Kubernetes.</span>
             </p>
@@ -407,9 +406,8 @@
             </a>
         </header>
 
-        <!-- SECCIÓN 2: Equipo: integrantes con fotos y roles -->
         <section id="equipo">
-            <h2>Equipo de Trabajo (Grupo 3)</h2>
+            <h2>Equipo</h2>
             <div class="team-grid">
                 <div class="member-card">
                     <div class="avatar-placeholder">👤</div>
@@ -449,29 +447,28 @@
             </div>
         </section>
 
-        <!-- SECCIÓN 3: Componentes: descripción, capturas y comandos de cada uno -->
         <section id="componentes">
-            <h2>Componentes Técnicos del Sistema</h2>
+            <h2>Componentes</h2>
 
-            <!-- Componente 1 -->
             <div class="component-block">
-                <h3>Componente 1: Virtualización con Linux</h3>
-                <p style="margin-bottom: 15px;"><strong>Descripción:</strong> Despliegue, configuración y aislamiento de red local de dos entornos de servidores independientes basados en la distribución asignada Fedora 44, implementando políticas de seguridad SSH y esquemas de particionado granular.</p>
+                <h3>descripción, capturas y comandos de cada uno</h3>
+                <p style="margin-top: 15px; margin-bottom: 15px;"><strong>Componente 1: Virtualización con Linux</strong></p>
+                <p style="margin-bottom: 15px;">Despliegue, configuración y aislamiento de red local de dos entornos de servidores independientes basados en la distribución asignada Fedora 41, implementando políticas de seguridad SSH y esquemas de particionado granular.</p>
                 <ul>
-                    <li><strong>VM Gráfica:</strong> Estación Fedora 44 Workstation utilizada como nodo de administración.</li>
-                    <li><strong>VM Consola:</strong> Servidor Fedora 44 Server configurado sin interfaz para optimización de recursos.</li>
+                    <li><strong>VM Gráfica:</strong> Estación Fedora 41 utilizada como nodo de administración.</li>
+                    <li><strong>VM Consola:</strong> Servidor Fedora 41 Server configurado sin interfaz para optimización de recursos.</li>
                     <li><strong>Particionamiento:</strong> Estructuración guiada manual del almacenamiento asignando espacios exclusivos para la raíz (<code class="inline">/</code>), el área de intercambio (<code class="inline">swap</code>) y los directorios de usuario (<code class="inline">/home</code>).</li>
                 </ul>
                 
                 <div class="evidence-container">
-                    <h4>Capturas de Pantalla del Componente:</h4>
+                    <h4>capturas:</h4>
                     <p><em>Esquema de discos e inspección de bloques (lsblk):</em></p>
-                    <img src="img/particionamiento.png" alt="Captura de particionamiento manual Fedora 44" class="evidence-img">
+                    <img src="img/particionamiento.png" alt="Captura de particionamiento manual Fedora 41" class="evidence-img">
                     
                     <p><em>Verificación de la comunicación remota encriptada inter-VM:</em></p>
                     <img src="img/ssh_evidencia.png" alt="Captura de pantalla acceso SSH verificado" class="evidence-img">
 
-                    <h4 style="margin-top: 20px;">Comandos Principales:</h4>
+                    <h4 style="margin-top: 20px;">comandos:</h4>
                     <div class="terminal-window">
                         <div class="terminal-header">
                             <div class="terminal-dots">
@@ -494,24 +491,23 @@ ssh usuario_servidor@ip_maquina_consola</code></pre>
 
             <hr>
 
-            <!-- Componente 2 -->
             <div class="component-block">
-                <h3>Componente 2: Contenedores Docker</h3>
-                <p style="margin-bottom: 15px;"><strong>Descripción:</strong> Modularización e instanciación de servicios web desacoplados mediante Docker Engine dentro del servidor gráfico, facilitando la persistencia externa y la vinculación de red interna entre contenedores.</p>
+                <p style="margin-bottom: 15px;"><strong>Componente 2: Contenedores Docker</strong></p>
+                <p style="margin-bottom: 15px;">Modularización e instanciación de servicios web desacoplados mediante Docker Engine dentro del servidor gráfico, facilitando la persistencia externa y la vinculación de red interna entre contenedores.</p>
                 <ul>
                     <li><strong>Frontend:</strong> Contenedor Nginx configurado para servir los archivos del portal web estático en el puerto estándar HTTP 80.</li>
-                    <li><strong>Backend:</strong> Microservicio HTTP programado en Python, compilado dinámicamente con la imagen base <code class="inline">fedora:44</code> y mapeado en el puerto <code class="inline">5000</code>.</li>
+                    <li><strong>Backend:</strong> Microservicio HTTP programado en Python, compilado dinámicamente con la imagen base <code class="inline">fedora:41</code> y mapeado en el puerto <code class="inline">5000</code>.</li>
                 </ul>
                 
                 <div class="evidence-container">
-                    <h4>Capturas de Pantalla del Componente:</h4>
+                    <h4>capturas:</h4>
                     <p><em>Orquestación unificada y levantamiento de servicios locales:</em></p>
                     <img src="img/docker_compose.png" alt="Captura de contenedores corriendo en Docker" class="evidence-img">
                     
                     <p><em>Comprobación de respuestas de red en el navegador:</em></p>
                     <img src="img/navegador_servicios.png" alt="Captura del navegador accediendo al Frontend y Backend" class="evidence-img">
 
-                    <h4 style="margin-top: 20px;">Comandos Principales:</h4>
+                    <h4 style="margin-top: 20px;">comandos:</h4>
                     <div class="terminal-window">
                         <div class="terminal-header">
                             <div class="terminal-dots">
@@ -538,28 +534,27 @@ curl http://localhost:5000</code></pre>
 
             <hr>
 
-            <!-- Componente 3 -->
             <div class="component-block">
-                <h3>Componente 3: Orquestación con Kubernetes</h3>
-                <p style="margin-bottom: 15px;"><strong>Descripción:</strong> Migración e inyección de la lógica técnica hacia un entorno de orquestación empresarial administrado de forma local mediante Minikube, implementando un balanceador de carga integrado.</p>
+                <p style="margin-bottom: 15px;"><strong>Componente 3: Orquestación con Kubernetes</strong></p>
+                <p style="margin-bottom: 15px;">Migración e inyección de la lógica técnica hacia un entorno de orquestación empresarial administrado de forma local mediante Minikube, implementando un balanceador de carga integrado.</p>
                 <ul>
                     <li><strong>Manifiestos Declarativos:</strong> Estructuración lógica del despliegue en archivos YAML independientes:
                         <ul>
                             <li style="margin-bottom: 2px; margin-top: 5px;"><code class="inline">backend-deployment.yaml</code>: Gestiona el ciclo de vida y escalado dinámico del servidor Python.</li>
-                            <li style="margin-bottom: 2px;"><code class="inline">frontend-nginx.yaml</code>: Define el pod del servidor web y expone la aplicación al exterior a través de una regla de enrutamiento NodePort (Puerto fijo asignado 30080).</li>
+                            <li style="margin-bottom: 2px;"><code class="inline">frontend-nginx.yaml</code>: Define el pod del servidor web y expone la aplicación al exterior a través de una regla de enrutamiento NodePort.</li>
                         </ul>
                     </li>
                 </ul>
                 
                 <div class="evidence-container">
-                    <h4>Capturas de Pantalla del Componente:</h4>
+                    <h4>capturas:</h4>
                     <p><em>Inspección técnica de los pods activos y asignación de NodePort:</em></p>
                     <img src="img/kubernetes_pods.png" alt="Captura de kubectl mostrando el estado de los Pods" class="evidence-img">
 
                     <p><em>Elasticidad e incremento del ecosistema de pods en tiempo real:</em></p>
                     <img src="img/kubernetes_escalado.png" alt="Captura que evidencia las 3 réplicas activas" class="evidence-img">
 
-                    <h4 style="margin-top: 20px;">Comandos Principales:</h4>
+                    <h4 style="margin-top: 20px;">comandos:</h4>
                     <div class="terminal-window">
                         <div class="terminal-header">
                             <div class="terminal-dots">
@@ -591,22 +586,21 @@ minikube service [nombre-servicio] --url</code></pre>
             </div>
         </section>
 
-        <!-- SECCIÓN 4: Conclusiones: aprendizajes, dificultades y recomendaciones -->
         <section id="conclusiones">
-            <h2>Conclusiones del Proyecto</h2>
+            <h2>Conclusiones</h2>
             
             <div class="conclusion-block">
-                <h3>1. Aprendizajes Obtenidos</h3>
+                <h3>aprendizajes</h3>
                 <p>El despliegue y escalado de réplicas en Kubernetes mediante Minikube demostró la robustez de la plataforma para mantener la alta disponibilidad del sistema. Al definir 3 réplicas en el manifiesto de despliegue, el clúster balancea automáticamente la carga de peticiones hacia los pods activos, garantizando tolerancia a fallos y estabilidad tanto para el backend en Python como para el servidor Nginx.</p>
             </div>
 
             <div class="conclusion-block">
-                <h3>2. Dificultades Afrontadas</h3>
-                <p>Inicialmente se presentaron conflictos de enrutamiento y solapamiento de puertos al intentar servir la documentación técnica en el mismo entorno de red local que los contenedores de la aplicación web. Aislar por completo el portal de documentación dentro del directorio <code class="inline">/docs</code> y delegar su despliegue de forma independiente a través de GitHub Pages solucionó el problema de raíz, permitiendo un acceso público y limpio sin interferir con el tráfico del clúster.</p>
+                <h3>dificultades</h3>
+                <p>Inicialmente se presentaron conflictos de enrutamiento y solapamiento de puertos al intentar servir la documentación técnica en el mismo entorno de red local que los contenedores de la aplicación web. Aislar por completo el portal de documentación eliminando el directorio <code class="inline">docs</code> local y delegando su despliegue de forma independiente a través de las ramas del repositorio solucionó el problema de raíz, permitiendo un acceso limpio sin interferir con el tráfico del clúster.</p>
             </div>
 
             <div class="conclusion-block">
-                <h3>3. Recomendaciones</h3>
+                <h3>recomendaciones</h3>
                 <p>Para futuros proyectos a gran escala, se recomienda automatizar el flujo de despliegue mediante un pipeline de CI/CD (como GitHub Actions) que compile las imágenes de Docker ante cada cambio en el repositorio principal. Asimismo, es aconsejable implementar políticas de recursos (CPU y memoria limit/requests) en los manifiestos de Kubernetes para asegurar un uso eficiente del hardware del nodo.</p>
             </div>
         </section>
