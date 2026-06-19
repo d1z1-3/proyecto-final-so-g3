@@ -403,7 +403,7 @@
             </p>
             <p style="margin-top: 10px;">
                 <strong>Objetivos:</strong>
-                <span style="display:block; margin-top:5px; padding-left:15px;">• Diseñar e implementar entornos de servidores aislados bajo la distribución Fedora 41.</span>
+                <span style="display:block; margin-top:5px; padding-left:15px;">• Diseñar e implementar entornos de servidores aislados bajo la distribución Fedora 44.</span>
                 <span style="display:block; padding-left:15px;">• Modularizar las capas del Frontend (Nginx) y Backend (Python) usando tecnologías de empaquetado Docker.</span>
                 <span style="display:block; padding-left:15px;">• Garantizar la tolerancia a fallos mediante el aprovisionamiento de políticas de replicación y balanceo en un clúster local de Kubernetes.</span>
             </p>
@@ -468,36 +468,36 @@
                 </ul>
                 
                 <div class="evidence-container">
-    <h4>Evidencia del Proceso:</h4>
-    <p><em>Configuración del esquema de almacenamiento estructurado:</em></p>
-    
-    <p class="evidence-desc">
-        Configuración de la tabla de particiones bajo el esquema <strong>Utilizar el almacenamiento configurado</strong> para un disco virtual GPT de 21,5 GB (sda), distribuyendo el espacio de la siguiente manera:
-    </p>
-    
-    <ul>
-        <li><strong>sda1:</strong> 2,10 MB asignados a <code>biosboot</code> (arranque del sistema).</li>
-        <li><strong>sda2:</strong> 14,0 GB montados en la raíz (<code>/</code>) para el sistema operativo.</li>
-        <li><strong>sda4:</strong> 5,47 GB reservados para el directorio de usuarios (<code>/home</code>).</li>
-        <li><strong>sda3:</strong> 2,00 GB asignados como área de intercambio (<code>swap</code>).</li>
-    </ul>
-
-    <img src="img/Particionamiento_manual.jpeg" alt="Captura de particionamiento manual Fedora 44" class="evidence-img">
-</div>
+                    <h4>Evidencia del Proceso:</h4>
+                    <p><em>Configuración del esquema de almacenamiento estructurado:</em></p>
                     
-                    <p><em>Verificación de la comunicación remota encriptada inter-VM:</em></p>
-                    <img src="img/ssh_evidencia.png" alt="Captura de pantalla acceso SSH verificado" class="evidence-img">
+                    <p class="evidence-desc">
+                        Configuración de la tabla de particiones bajo el esquema <strong>Utilizar el almacenamiento configurado</strong> para un disco virtual GPT de 21,5 GB (sda), distribuyendo el espacio de la siguiente manera:
+                    </p>
+                    
+                    <ul>
+                        <li><strong>sda1:</strong> 2,10 MB asignados a <code>biosboot</code> (arranque del sistema).</li>
+                        <li><strong>sda2:</strong> 14,0 GB montados en la raíz (<code>/</code>) para el sistema operativo.</li>
+                        <li><strong>sda4:</strong> 5,47 GB reservados para el directorio de usuarios (<code>/home</code>).</li>
+                        <li><strong>sda3:</strong> 2,00 GB asignados como área de intercambio (<code>swap</code>).</li>
+                    </ul>
 
-                    <h4 style="margin-top: 20px;">Comandos:</h4>
-                    <div class="terminal-window">
-                        <div class="terminal-header">
-                            <div class="terminal-dots">
-                                <div class="dot red"></div>
-                                <div class="dot yellow"></div>
-                                <div class="dot green"></div>
-                            </div>
+                    <img src="docs/images/Particionamiento_manual.jpeg" alt="Captura de particionamiento manual Fedora 44" class="evidence-img">
+                </div>
+                    
+                <p style="margin-top: 25px;"><em>Verificación de la comunicación remota encriptada inter-VM:</em></p>
+                <img src="docs/images/ssh_evidencia.png" alt="Captura de pantalla acceso SSH verificado" class="evidence-img">
+
+                <h4 style="margin-top: 20px;">Comandos:</h4>
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
                         </div>
-                        <pre><code># Inspeccionar interfaces de red y direccionamiento IP asignado
+                    </div>
+                    <pre><code># Inspeccionar interfaces de red y direccionamiento IP asignado
 ip a
 
 # Comprobar la jerarquía y estructura de las particiones de disco activas
@@ -505,7 +505,6 @@ lsblk
 
 # Establecer la conexión remota segura hacia el entorno consola
 ssh usuario_servidor@ip_maquina_consola</code></pre>
-                    </div>
                 </div>
             </div>
 
@@ -522,10 +521,10 @@ ssh usuario_servidor@ip_maquina_consola</code></pre>
                 <div class="evidence-container">
                     <h4>Capturas:</h4>
                     <p><em>Orquestación unificada y levantamiento de servicios locales:</em></p>
-                    <img src="img/docker_compose.png" alt="Captura de contenedores corriendo en Docker" class="evidence-img">
+                    <img src="docs/images/docker_compose.png" alt="Captura de contenedores corriendo en Docker" class="evidence-img">
                     
                     <p><em>Comprobación de respuestas de red en el navegador:</em></p>
-                    <img src="img/navegador_servicios.png" alt="Captura del navegador accediendo al Frontend y Backend" class="evidence-img">
+                    <img src="docs/images/navegador_servicios.png" alt="Captura del navegador accediendo al Frontend y Backend" class="evidence-img">
 
                     <h4 style="margin-top: 20px;">Comandos:</h4>
                     <div class="terminal-window">
@@ -569,10 +568,10 @@ curl http://localhost:5000</code></pre>
                 <div class="evidence-container">
                     <h4>Capturas:</h4>
                     <p><em>Inspección técnica de los pods activos y asignación de NodePort:</em></p>
-                    <img src="img/kubernetes_pods.png" alt="Captura de kubectl mostrando el estado de los Pods" class="evidence-img">
+                    <img src="docs/images/kubernetes_pods.png" alt="Captura de kubectl mostrando el estado de los Pods" class="evidence-img">
 
                     <p><em>Elasticidad e incremento del ecosistema de pods en tiempo real:</em></p>
-                    <img src="img/kubernetes_escalado.png" alt="Captura que evidencia las 3 réplicas activas" class="evidence-img">
+                    <img src="docs/images/kubernetes_escalado.png" alt="Captura que evidencia las 3 réplicas activas" class="evidence-img">
 
                     <h4 style="margin-top: 20px;">Comandos:</h4>
                     <div class="terminal-window">
