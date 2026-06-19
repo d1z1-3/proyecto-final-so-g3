@@ -460,7 +460,7 @@
             <div class="component-block">
                 <h3>Descripción, capturas y comandos de cada uno</h3>
                 <p style="margin-top: 15px; margin-bottom: 15px;"><strong>Componente 1: Virtualización con Linux</strong></p>
-                <p style="margin-bottom: 15px;">Despliegue, configuración y aislamiento de red local de dos entornos de servidores independientes basados en la distribución asignada Fedora 41, implementando políticas de seguridad SSH y esquemas de particionado granular.</p>
+                <p style="margin-bottom: 15px;">Despliegue, configuración y aislamiento de red local de dos entornos de servidores independientes basados en la distribución asignada Fedora 44, implementando políticas de seguridad SSH y esquemas de particionado granular.</p>
                 <ul>
                     <li><strong>VM Gráfica:</strong> Estación Fedora 44 utilizada como nodo de administración.</li>
                     <li><strong>VM Consola:</strong> Servidor Fedora 44 Server configurado sin interfaz para optimización de recursos.</li>
@@ -468,9 +468,22 @@
                 </ul>
                 
                 <div class="evidence-container">
-                    <h4>Capturas:</h4>
-                    <p><em>Esquema de discos e inspección de bloques (lsblk):</em></p>
-                    <img src="img/particionamiento.png" alt="Captura de particionamiento manual Fedora 44" class="evidence-img">
+    <h4>Evidencia del Proceso:</h4>
+    <p><em>Configuración del esquema de almacenamiento estructurado:</em></p>
+    
+    <p class="evidence-desc">
+        Configuración de la tabla de particiones bajo el esquema **Utilizar el almacenamiento configurado** para un disco virtual GPT de 21,5 GB (sda), distribuyendo el espacio de la siguiente manera:
+    </p>
+    
+    <ul>
+        <li><strong>sda1:</strong> 2,10 MB asignados a <code>biosboot</code> (arranque del sistema).</li>
+        <li><strong>sda2:</strong> 14,0 GB montados en la raíz (<code>/</code>) para el sistema operativo.</li>
+        <li><strong>sda4:</strong> 5,47 GB reservados para el directorio de usuarios (<code>/home</code>).</li>
+        <li><strong>sda3:</strong> 2,00 GB asignados como área de intercambio (<code>swap</code>).</li>
+    </ul>
+
+    <img src="img/Particionamiento manual.jpeg" alt="Captura de particionamiento manual Fedora 44" class="evidence-img">
+</div>
                     
                     <p><em>Verificación de la comunicación remota encriptada inter-VM:</em></p>
                     <img src="img/ssh_evidencia.png" alt="Captura de pantalla acceso SSH verificado" class="evidence-img">
