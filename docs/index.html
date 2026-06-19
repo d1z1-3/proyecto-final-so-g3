@@ -379,22 +379,27 @@
             <div class="team-grid">
                 <div class="member-card">
                     <p><strong>Felipe Ramírez Peñafiel</strong></p>
+                    <p style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600; margin-top: 4px;">Backend Developer</p>
                     <p style="margin-top: 8px;">Código: <code class="inline">2478061</code></p>
                 </div>
                 <div class="member-card">
                     <p><strong>Jhojan Andrés Martínez Peñafiel</strong></p>
+                    <p style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600; margin-top: 4px;">Kubernetes / Orquestación</p>
                     <p style="margin-top: 8px;">Código: <code class="inline">2478060</code></p>
                 </div>
                 <div class="member-card">
                     <p><strong>Evelin Xiomara Astudillo Pedroza</strong></p>
+                    <p style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600; margin-top: 4px;">Virtualización</p>
                     <p style="margin-top: 8px;">Código: <code class="inline">2477871</code></p>
                 </div>
                 <div class="member-card">
                     <p><strong>Roony Alejandro Ausecha Lourido</strong></p>
+                    <p style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600; margin-top: 4px;">Docker</p>
                     <p style="margin-top: 8px;">Código: <code class="inline">2477957</code></p>
                 </div>
                 <div class="member-card">
                     <p><strong>Paola Andrea Torres Guerra</strong></p>
+                    <p style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600; margin-top: 4px;">Sitio Web + Documentación</p>
                     <p style="margin-top: 8px;">Código: <code class="inline">2478101</code></p>
                 </div>
             </div>
@@ -439,7 +444,7 @@
                 <h3>Componente 2: Contenedores Docker</h3>
                 <p>Aislamiento de servicios locales mediante la instalación y aprovisionamiento de Docker Engine nativo en la máquina virtual gráfica.</p>
                 <ul>
-                    <li><strong>Frontend:</strong> Servidor web Nginx que aloja la estructura estática del sitio.</li>
+                    <li><strong>Frontend:</strong> Servidor web Nginx que aloja la estructura estática del sitio (Puerto 80) mapeado con volúmenes persistentes.</li>
                     <li><strong>Backend:</strong> Servidor básico HTTP en Python configurado y expuesto en el puerto <code class="inline">5000</code>.</li>
                     <li><strong>Orquestación:</strong> Automatización del despliegue unificado y gestión de volúmenes persistentes con Docker Compose utilizando como imagen base <code class="inline">fedora:44</code>.</li>
                 </ul>
@@ -468,10 +473,15 @@
 
             <div class="component-block">
                 <h3>Componente 3: Orquestación con Kubernetes</h3>
-                <p>Configuración del cluster local de un nodo mediante Minikube para la gestión automatizada de alta disponibilidad.</p>
+                <p>Configuración del clúster local de un nodo mediante Minikube para la gestión automatizada de alta disponibilidad.</p>
                 <ul>
-                    <li><strong>Manifiestos:</strong> Definición lógica de la arquitectura en archivos YAML (<code class="inline">Deployment</code> y <code class="inline">Service</code> tipo NodePort).</li>
-                    <li><strong>Réplicas:</strong> Despliegue inicial de la imagen oficial de Nginx parametrizada con 2 réplicas y escalado manual verificado a 3 réplicas operativas.</li>
+                    <li><strong>Manifiestos (/k8s):</strong> Definición lógica estructurada en archivos YAML:
+                        <ul>
+                            <li style="margin-bottom: 2px; margin-top: 5px;"><code class="inline">backend-deployment.yaml</code> — Configuración optimizada con 3 réplicas para el despliegue orquestado del backend.</li>
+                            <li style="margin-bottom: 2px;"><code class="inline">frontend-nginx.yaml</code> — Configuración del despliegue del frontend con Nginx expuesto mediante un servicio NodePort en el puerto 30080.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Réplicas:</strong> Despliegue inicial parametrizado y escalado manual verificado a 3 réplicas plenamente operativas para mitigar sobrecargas de tráfico.</li>
                 </ul>
                 
                 <div class="evidence-container">
@@ -509,9 +519,9 @@
         <section id="conclusiones">
             <h2>Conclusiones del Proyecto</h2>
             <ul>
-                <li>El particionamiento manual asegura un aislamiento lógico del almacenamiento, impidiendo que desbordamientos en directorios de usuarios (<code class="inline">/home</code>) comprometan la estabilidad del sistema raíz (<code class="inline">/</code>) en Fedora 44.</li>
-                <li>Docker Engine permite la ejecución eficiente de microservicios sin la penalización de rendimiento de la virtualización completa, garantizando entornos idénticos de desarrollo tanto para el servidor Python como para Nginx.</li>
-                <li>Kubernetes (a través de Minikube) automatiza la tolerancia a fallos de la capa web mediante políticas de replicación, facilitando pautas de escalado horizontal rápido ante variaciones de carga de trabajo.</li>
+                <li>El despliegue y escalado de réplicas en Kubernetes mediante Minikube demostró la robustez de la plataforma para mantener la alta disponibilidad del sistema. Al definir 3 réplicas en el manifiesto de despliegue, el clúster balancea automáticamente la carga de peticiones hacia los pods activos, garantizando tolerancia a fallos y estabilidad tanto para el backend en Python como para el servidor Nginx.</li>
+                <li>Inicialmente se presentaron conflictos de enrutamiento y solapamiento de puertos al intentar servir la documentación técnica en el mismo entorno de red local que los contenedores de la aplicación web. Aislar por completo el portal de documentación dentro del directorio <code class="inline">/docs</code> y delegar su despliegue de forma independiente a través de GitHub Pages solucionó el problema de raíz, permitiendo un acceso público y limpio sin interferir con el tráfico del clúster.</li>
+                <li>Para futuros proyectos a gran escala, se recomienda automatizar el flujo de despliegue mediante un pipeline de CI/CD (como GitHub Actions) que compile las imágenes de Docker ante cada cambio en el repositorio principal. Asimismo, es aconsejable implementar políticas de recursos (CPU y memoria limit/requests) en los manifiestos de Kubernetes para asegurar un uso eficiente del hardware del nodo.</li>
             </ul>
         </section>
     </div>
