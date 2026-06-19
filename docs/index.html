@@ -13,7 +13,7 @@
             --accent-color: #d4af37; /* Dorado */
             --bg-color: #f3f4f6; /* Fondo gris claro más suave */
             --card-bg: #ffffff;
-            --text-color: #2d3748; /* Texto principal más suave (no negro puro) */
+            --text-color: #2d3748; /* Texto principal más suave */
             --terminal-bg: #0f172a; /* Fondo pizarra oscuro para la terminal */
         }
 
@@ -30,14 +30,14 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-color);
-            background-image: radial-gradient(#e5e7eb 1px, transparent 1px); /* Sutil patrón de puntos en el fondo */
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
             background-size: 20px 20px;
         }
 
         /* Barra de navegación flotante moderna con efecto Glassmorphism */
         nav {
             background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px); /* Efecto despulido/esmerilado */
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             position: sticky;
@@ -61,7 +61,6 @@
             transition: color 0.3s ease;
         }
 
-        /* Animación de línea inferior para los enlaces del menú */
         nav a::after {
             content: '';
             position: absolute;
@@ -78,7 +77,7 @@
         }
 
         nav a:hover::after {
-            width: 100%; /* La línea se expande de izquierda a derecha */
+            width: 100%;
         }
 
         /* Contenedor principal */
@@ -99,10 +98,9 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             position: relative;
             overflow: hidden;
-            border-left: 6px solid var(--primary-color); /* Acento Univalle en el borde */
+            border-left: 6px solid var(--primary-color);
         }
 
-        /* Efecto de destello de fondo en el header */
         header::before {
             content: '';
             position: absolute;
@@ -130,27 +128,27 @@
             opacity: 0.9;
         }
 
-        /* Botón de YouTube interactivo y llamativo */
+        /* Botón de YouTube interactivo */
         .video-btn {
             display: inline-block;
             background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
             color: white;
             padding: 14px 28px;
-            border-radius: 30px; /* Bordes completamente redondeados */
+            border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
             margin-top: 25px;
             box-shadow: 0 4px 15px rgba(229, 62, 62, 0.4);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote elástico */
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .video-btn:hover {
-            transform: translateY(-4px) scale(1.03); /* Sube y se agranda ligeramente */
+            transform: translateY(-4px) scale(1.03);
             box-shadow: 0 7px 20px rgba(229, 62, 62, 0.6);
         }
 
         .video-btn:active {
-            transform: translateY(-1px); /* Efecto de hundimiento al clickear */
+            transform: translateY(-1px);
         }
 
         /* Secciones Generales */
@@ -164,7 +162,6 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Sutil efecto flotante al pasar el mouse por encima de una sección entera */
         section:hover {
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
         }
@@ -196,7 +193,7 @@
         hr {
             border: 0;
             height: 1px;
-            background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.1), rgba(0,0,0,0)); /* Degradado elegante */
+            background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.1), rgba(0,0,0,0));
             margin: 35px 0;
         }
 
@@ -207,7 +204,6 @@
             gap: 25px;
         }
 
-        /* Tarjetas de integrantes mejoradas */
         .member-card {
             background: #ffffff;
             padding: 25px;
@@ -223,11 +219,11 @@
 
         .member-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(138, 21, 27, 0.1); /* Sombra con un toque del rojo Univalle */
+            box-shadow: 0 12px 25px rgba(138, 21, 27, 0.1);
             border-top-color: var(--primary-color);
         }
 
-        .avatar-placeholder, .member-card img {
+        .member-card img {
             width: 90px;
             height: 90px;
             border-radius: 50%;
@@ -236,15 +232,6 @@
             align-items: center;
             justify-content: center;
             border: 3px solid #f1f5f9;
-        }
-
-        .avatar-placeholder {
-            background-color: #e2e8f0;
-            font-size: 2rem;
-            color: #94a3b8;
-        }
-
-        .member-card img {
             object-fit: cover;
         }
 
@@ -252,7 +239,7 @@
         ul {
             padding-left: 20px;
             margin-bottom: 25px;
-            list-style-type: none; /* Quitamos los puntos por defecto */
+            list-style-type: none;
         }
 
         li {
@@ -261,7 +248,6 @@
             padding-left: 15px;
         }
 
-        /* Añadimos un marcador personalizado rojo en lugar del punto estándar */
         li::before {
             content: "•";
             color: var(--primary-color);
@@ -280,7 +266,6 @@
             margin-top: 25px;
         }
 
-        /* Efecto Zoom elegante para las capturas de pantalla */
         .evidence-img {
             max-width: 100%;
             height: auto;
@@ -289,7 +274,7 @@
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all 0.4s ease;
-            cursor: zoom-in; /* Indica interactividad */
+            cursor: zoom-in;
         }
 
         .evidence-img:hover {
@@ -297,7 +282,7 @@
             box-shadow: 0 12px 28px rgba(0,0,0,0.15);
         }
 
-        /* Estilo Ventana de Terminal Pro (Estilo macOS / VS Code) */
+        /* Estilo Ventana de Terminal Pro */
         .terminal-window {
             background: var(--terminal-bg);
             border-radius: 12px;
@@ -330,7 +315,7 @@
         .dot.green { background: #27c93f; }
 
         pre {
-            color: #38bdf8; /* Color azul celeste moderno para los comandos */
+            color: #38bdf8;
             padding: 20px;
             overflow-x: auto;
             font-family: 'Fira Code', Consolas, Monaco, monospace;
@@ -338,7 +323,6 @@
             background: #0f172a;
         }
 
-        /* Código inline más limpio */
         code.inline {
             background: #ffebeb;
             color: var(--primary-color);
@@ -350,7 +334,6 @@
             border: 1px solid rgba(138, 21, 27, 0.1);
         }
 
-        /* Bloques de Conclusiones */
         .conclusion-block {
             margin-bottom: 25px;
         }
@@ -374,7 +357,6 @@
             color: var(--accent-color);
             text-decoration: none;
             font-weight: bold;
-            position: relative;
             transition: color 0.3s;
         }
         
@@ -468,25 +450,25 @@
                 </ul>
                 
                 <div class="evidence-container">
-    <h4>Evidencia del Proceso:</h4>
-    <p><em>Configuración del esquema de almacenamiento estructurado:</em></p>
-    
-    <p class="evidence-desc">
-        Configuración de la tabla de particiones bajo el esquema <strong>Utilizar el almacenamiento configurado</strong> para un disco virtual GPT de 21,5 GB (sda) en Fedora 44, distribuyendo el espacio de la siguiente manera:
-    </p>
-    
-    <ul>
-        <li><strong>sda1:</strong> 2,10 MB asignados a <code>biosboot</code> (arranque del sistema).</li>
-        <li><strong>sda2:</strong> 14,0 GB montados en la raíz (<code>/</code>) para el sistema operativo.</li>
-        <li><strong>sda4:</strong> 5,47 GB reservados para el directorio de usuarios (<code>/home</code>).</li>
-        <li><strong>sda3:</strong> 2,00 GB asignados como área de intercambio (<code>swap</code>).</li>
-    </ul>
+                    <h4>Evidencia del Proceso:</h4>
+                    <p><em>Configuración del esquema de almacenamiento estructurado:</em></p>
+                    
+                    <p class="evidence-desc">
+                        Configuración de la tabla de particiones bajo el esquema <strong>Utilizar el almacenamiento configurado</strong> para un disco virtual GPT de 21,5 GB (sda) en Fedora 44, distribuyendo el espacio de la siguiente manera:
+                    </p>
+                    
+                    <ul>
+                        <li><strong>sda1:</strong> 2,10 MB asignados a <code>biosboot</code> (arranque del sistema).</li>
+                        <li><strong>sda2:</strong> 14,0 GB montados en la raíz (<code>/</code>) para el sistema operativo.</li>
+                        <li><strong>sda4:</strong> 5,47 GB reservados para el directorio de usuarios (<code>/home</code>).</li>
+                        <li><strong>sda3:</strong> 2,00 GB asignados como área de intercambio (<code>swap</code>).</li>
+                    </ul>
 
-    <img src="https://raw.githubusercontent.com/d1z1-3/proyecto-final-so-g3/main/docs/images/Particionamiento.jpeg" alt="Captura de particionamiento manual Fedora 44" class="evidence-img">
-</div>
+                    <img src="https://raw.githubusercontent.com/d1z1-3/proyecto-final-so-g3/main/docs/images/Particionamiento.jpeg" alt="Captura de particionamiento manual Fedora 44" class="evidence-img">
+                </div>
                     
                 <p style="margin-top: 25px;"><em>Verificación de la comunicación remota encriptada inter-VM:</em></p>
-                <img src="docs/images/ssh_evidencia.png" alt="Captura de pantalla acceso SSH verificado" class="evidence-img">
+                <img src="https://raw.githubusercontent.com/d1z1-3/proyecto-final-so-g3/main/docs/images/Acceso_SSH.jpeg" alt="Captura de pantalla acceso SSH verificado" class="evidence-img">
 
                 <h4 style="margin-top: 20px;">Comandos:</h4>
                 <div class="terminal-window">
