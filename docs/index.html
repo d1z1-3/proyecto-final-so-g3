@@ -451,7 +451,7 @@
                 
                 <div class="evidence-container">
                     <h4>Evidencia del Proceso (Almacenamiento):</h4>
-                    <p><em>Configuración del esquema de almacenamiento estructurado:</em></p>
+                    <p><em>Configuración del esquema de almacenamiento de particiones estructurado:</em></p>
                     
                     <p class="evidence-desc">
                         Configuración de la tabla de particiones bajo el esquema <strong>Utilizar el almacenamiento configurado</strong> para un disco virtual GPT de 21,5 GB (sda) en Fedora 44, distribuyendo el espacio de la siguiente manera:
@@ -510,19 +510,23 @@ ssh usuario_servidor@ip_maquina_consola</code></pre>
                 <p style="margin-bottom: 15px;"><strong>Componente 2: Contenedores Docker</strong></p>
                 <p style="margin-bottom: 15px;">Modularización e instanciación de servicios web desacoplados mediante Docker Engine dentro del servidor gráfico, facilitando la persistencia externa y la vinculación de red interna entre contenedores.</p>
                 <ul>
-                    <li><strong>Frontend:</strong> Contenedor Nginx configurado para servir los archivos del portal web estático en el puerto estándar HTTP 80.</li>
-                    <li><strong>Backend:</strong> Microservicio HTTP programado en Python, compilado dinámicamente con la imagen base <code class="inline">fedora:44</code> y mapeado en el puerto <code class="inline">5000</code>.</li>
+                    <li><strong>Frontend:</strong> Contenedor Nginx configurado para servir los archivos del portal web estático, expuesto localmente a través del puerto mapeado <code class="inline">8080:80</code>.</li>
+                    <li><strong>Backend:</strong> Microservicio HTTP programado en Python, compilado dinámicamente con la imagen base <code class="inline">fedora:44</code> y mapeado internamente en el puerto <code class="inline">5000</code>.</li>
                 </ul>
                 
                 <div class="evidence-container">
                     <h4>Capturas:</h4>
-                    <p><em>Orquestación unificada y levantamiento de servicios locales:</em></p>
-                    <img src="docs/images/docker_compose.png" alt="Captura de contenedores corriendo en Docker" class="evidence-img">
+                    <p><em>Orquestación unificada y levantamiento de servicios locales con Docker Compose:</em></p>
+                    <p class="evidence-desc">
+                        Verificación operacional del estado de los contenedores donde se observa que ambos microservicios (<code class="inline">backend</code> y <code class="inline">frontend</code>) se encuentran activos (<code class="inline">Up</code>) y direccionando de forma correcta los respectivos puertos hacia el host.
+                    </p>
+
+                    <img src="https://raw.githubusercontent.com/d1z1-3/proyecto-final-so-g3/main/docs/images/Contenedores.jpeg" alt="Captura de contenedores corriendo en Docker Compose" class="evidence-img">
                     
                     <p><em>Comprobación de respuestas de red en el navegador:</em></p>
                     <img src="docs/images/navegador_servicios.png" alt="Captura del navegador accediendo al Frontend y Backend" class="evidence-img">
 
-                    <h4 style="margin-top: 20px;">Comandos:</h4>
+                    <h4 style="margin-top: 20px;">Comandos Ejecutados:</h4>
                     <div class="terminal-window">
                         <div class="terminal-header">
                             <div class="terminal-dots">
@@ -534,14 +538,14 @@ ssh usuario_servidor@ip_maquina_consola</code></pre>
                         <pre><code># Construir imágenes y lanzar la infraestructura de contenedores en segundo plano
 docker compose up -d
 
-# Enumerar el estado operacional de los contenedores en ejecución
-docker ps
+# Enumerar y verificar el estado operacional de los servicios del proyecto
+sudo docker compose ps
 
 # Inspeccionar las imágenes locales almacenadas en el sistema host
 docker images
 
-# Validar de forma local la cabecera de respuesta de las rutas HTTP
-curl http://localhost:80
+# Validar de forma local la cabecera de respuesta de las rutas HTTP mapeadas
+curl http://localhost:8080
 curl http://localhost:5000</code></pre>
                     </div>
                 </div>
