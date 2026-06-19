@@ -127,9 +127,19 @@ El portal web técnico está aislado en el directorio `/docs` para evitar confli
 
 ## Conclusiones
 
-1. El despliegue y escalado de réplicas en Kubernetes mediante Minikube demostró la robustez de la plataforma para mantener la alta disponibilidad del sistema. Al definir 3 réplicas en el manifiesto de despliegue, el clúster balancea automáticamente la carga de peticiones hacia los pods activos, garantizando tolerancia a fallos y estabilidad tanto para el backend en Python como para el servidor Nginx.
-2. Inicialmente se presentaron conflictos de enrutamiento y solapamiento de puertos al intentar servir la documentación técnica en el mismo entorno de red local que los contenedores de la aplicación web. Aislar por completo el portal de documentación dentro del directorio `/docs` y delegar su despliegue de forma independiente a través de GitHub Pages solucionó el problema de raíz, permitiendo un acceso público y limpio sin interferir con el tráfico del clúster.
-3. Para futuros proyectos a gran escala, se recomienda automatizar el flujo de despliegue mediante un pipeline de CI/CD (como GitHub Actions) que compile las imágenes de Docker ante cada cambio en el repositorio principal. Asimismo, es aconsejable implementar políticas de recursos (CPU y memoria limit/requests) en los manifiestos de Kubernetes para asegurar un uso eficiente del hardware del nodo.
+### Aprendizajes
+Lograr el despliegue con Minikube y mantener las réplicas activas fue el punto de inflexión del trabajo. Entender cómo Kubernetes gestiona la alta disponibilidad, viendo cómo el sistema reacciona para mantener los pods arriba, nos dio una perspectiva clara de lo que significa que un servicio sea realmente estable. Fue un proceso de aprender a dominar las herramientas de orquestación, entendiendo que la robustez del sistema depende de cómo configuramos cada pieza.
+
+### Las dificultades reales
+Nuestro mayor obstáculo no fue el código en sí, sino la infraestructura física con la que trabajamos. Al tener dispositivos con almacenamiento limitado y recursos muy ajustados para las máquinas virtuales, el proceso se volvió una lucha constante. Muchas veces el despliegue se interrumpía o quedaba a medias simplemente porque el sistema se quedaba sin espacio o se ahogaba por falta de memoria. Esto nos obligó a ser extremadamente cuidadosos y creativos para buscar espacio donde parecía no haberlo, lo que hizo que el proceso fuera mucho más lento y trabajoso de lo que esperábamos. Esa limitación física fue lo que realmente puso a prueba nuestra paciencia y capacidad para resolver problemas sobre la marcha.
+
+### Recomendaciones técnicas
+* **Gestión de recursos (Limit/Requests):** Es indispensable establecer `resources.limits` y `resources.requests` en los manifiestos YAML. Esto evita que el scheduler de Kubernetes sobreasigne recursos a los pods, previniendo el *node pressure* o el *eviction* de contenedores por falta de memoria RAM en entornos con hardware restringido.
+* **Optimización de imágenes (Multi-stage builds):** Ante las limitaciones de almacenamiento, se recomienda implementar *multi-stage builds* en los Dockerfiles. Esto permite generar imágenes finales que solo contienen el artefacto compilado y las dependencias de ejecución, reduciendo drásticamente el peso de la imagen y ahorrando espacio en disco durante el *pulling*.
+* **Uso de volúmenes efímeros:** Para procesos que requieren escritura temporal, se sugiere el uso de volúmenes de tipo `emptyDir` con un límite explícito de tamaño (`sizeLimit`). Esto asegura que el sistema no exceda la capacidad de almacenamiento del nodo durante la ejecución de los pods.
+* **Limpieza de clúster:** Establecer un hábito de ejecución de comandos de purga de recursos huérfanos (`docker system prune` o `kubectl delete` de pods en estado `Evicted` o `Failed`) es necesario para liberar espacio en disco de forma periódica en ambientes de desarrollo con recursos limitados.
+
 ---
 
 *Proyecto desarrollado para la asignatura Sistemas Operativos 750001C — Semestre 1, 2026*
+---
