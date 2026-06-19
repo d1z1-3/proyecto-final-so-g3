@@ -334,6 +334,12 @@
             border: 1px solid rgba(138, 21, 27, 0.1);
         }
 
+        /* Clase añadida para destacar los comandos de particionamiento en rojo institucional */
+        .partition-cmd {
+            color: #f87171; /* Un rojo claro/coral que contrasta de forma excelente sobre el fondo oscuro pizarra */
+            font-weight: 600;
+        }
+
         .conclusion-block {
             margin-bottom: 25px;
         }
@@ -440,7 +446,7 @@
             <h2>Componentes</h2>
 
             <div class="component-block">
-                <h3>Descripción, capturas y comandos de cada uno</h3>
+                <h3>Descripción, capturas and comandos de cada uno</h3>
                 <p style="margin-top: 15px; margin-bottom: 15px;"><strong>Componente 1: Virtualización con Linux</strong></p>
                 <p style="margin-bottom: 15px;">Despliegue, configuración y aislamiento de red local de dos entornos de servidores independientes basados en la distribución <strong>Fedora 44</strong>, implementando políticas de seguridad SSH y esquemas de particionado granular.</p>
                 <ul>
@@ -496,8 +502,8 @@
                     <pre><code># Inspeccionar interfaces de red y direccionamiento IP asignado
 ip a
 
-# Comprobar la jerarquía y estructura de las particiones de disco activas
-lsblk
+<span class="partition-cmd"># Comprobar la jerarquía y estructura de las particiones de disco activas
+lsblk</span>
 
 # Establecer la conexión remota segura hacia el entorno consola
 ssh usuario_servidor@ip_maquina_consola</code></pre>
