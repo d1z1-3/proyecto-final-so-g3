@@ -9,10 +9,10 @@
 | Nombre | Código | Rol |
 |--------|--------|-----|
 | Evelin Xiomara Astudillo Pedroza (XiomaraAP) | 2477871 | Sitio web |
-| Roony Alejandro Ausecha Lourido (Roony20-2026) | 2477957 | Documentación y sitio web |
-| Jhojan Andrés Martínez Peñafiel (Jhojan9343) | 2478060 | Kubernetes / Orquestación |
+| Roony Alejandro Ausecha Lourido (Roony20-2026) | 2477957 | Documentación y Sitio Web |
+| Jhojan Andrés Martínez Peñafiel (Jhojan9343) | 2478060 | Kubernetes / Orquestación y Video |
 | Felipe Ramírez Peñafiel (d1z1-3) | 2478061 | Backend Developer |
-| Paola Andrea Torres Guerra (paolatorres-png) | 2478101 | Video y sitio web |
+| Paola Andrea Torres Guerra (paolatorres-png) | 2478101 | Video y Sitio Web |
 
 **Grupo asignado:** Grupo 3  
 **Distribución gráfica:** Fedora 44  
