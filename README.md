@@ -127,10 +127,11 @@ El portal web técnico está aislado en el directorio `/docs` para evitar confli
 
 ## Conclusiones
 
-1. [Aprendizaje principal sobre el despliegue y escalado de réplicas en k8s]
-2. [Dificultad encontrada con las rutas/conflictos de Docker y cómo aislar la documentación en la carpeta /docs para GitHub Pages lo solucionó]
-3. [Recomendación para futuros proyectos]
+## Conclusiones
 
+1. El despliegue y escalado de réplicas en Kubernetes mediante Minikube demostró la robustez de la plataforma para mantener la alta disponibilidad del sistema. Al definir 3 réplicas en el manifiesto de despliegue, el clúster balancea automáticamente la carga de peticiones hacia los pods activos, garantizando tolerancia a fallos y estabilidad tanto para el backend en Python como para el servidor Nginx.
+2. Inicialmente se presentaron conflictos de enrutamiento y solapamiento de puertos al intentar servir la documentación técnica en el mismo entorno de red local que los contenedores de la aplicación web. Aislar por completo el portal de documentación dentro del directorio `/docs` y delegar su despliegue de forma independiente a través de GitHub Pages solucionó el problema de raíz, permitiendo un acceso público y limpio sin interferir con el tráfico del clúster.
+3. Para futuros proyectos a gran escala, se recomienda automatizar el flujo de despliegue mediante un pipeline de CI/CD (como GitHub Actions) que compile las imágenes de Docker ante cada cambio en el repositorio principal. Asimismo, es aconsejable implementar políticas de recursos (CPU y memoria limit/requests) en los manifiestos de Kubernetes para asegurar un uso eficiente del hardware del nodo.
 ---
 
 *Proyecto desarrollado para la asignatura Sistemas Operativos 750001C — Semestre 1, 2026*
