@@ -457,17 +457,17 @@
                 
                 <div class="evidence-container">
                     <h4>Evidencia del Proceso (Almacenamiento):</h4>
-                    <p><em>Configuración del esquema de almacenamiento de particiones estructurado:</em></p>
+                    <p><em>Configuración del esquema de almacenamiento de particiones structured:</em></p>
                     
                     <p class="evidence-desc">
-                        Configuración de la tabla de particiones bajo el esquema <strong>Utilizar el almacenamiento configurado</strong> para un disco virtual GPT de 21,5 GB (sda) en Fedora 44, distribuyendo el espacio de la siguiente manera:
+                        Configuración de la tabla de particiones bajo el esquema <strong>Utilizar el almacenamiento configurado</strong> para un disco virtual GPT de 21,5 GB (<span class="partition-cmd">sda</span>) en Fedora 44, distribuyendo el espacio de la siguiente manera:
                     </p>
                     
                     <ul>
-                        <li><strong>sda1:</strong> 2,10 MB asignados a <code>biosboot</code> (arranque del sistema).</li>
-                        <li><strong>sda2:</strong> 14,0 GB montados en la raíz (<code>/</code>) para el sistema operativo.</li>
-                        <li><strong>sda4:</strong> 5,47 GB reservados para el directorio de usuarios (<code>/home</code>).</li>
-                        <li><strong>sda3:</strong> 2,00 GB asignados como área de intercambio (<code>swap</code>).</li>
+                        <li><strong class="partition-cmd">sda1:</strong> 2,10 MB asignados a <code class="partition-cmd">biosboot</code> (arranque del sistema).</li>
+                        <li><strong class="partition-cmd">sda2:</strong> 14,0 GB montados en la raíz (<code class="partition-cmd">/</code>) para el sistema operativo.</li>
+                        <li><strong class="partition-cmd">sda4:</strong> 5,47 GB reservados para el directorio de usuarios (<code class="partition-cmd">/home</code>).</li>
+                        <li><strong class="partition-cmd">sda3:</strong> 2,00 GB asignados como área de intercambio (<code class="partition-cmd">swap</code>).</li>
                     </ul>
 
                     <img src="https://raw.githubusercontent.com/d1z1-3/proyecto-final-so-g3/main/docs/images/Particionamiento.jpeg" alt="Captura de particionamiento manual Fedora 44" class="evidence-img">
