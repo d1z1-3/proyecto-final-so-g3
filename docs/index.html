@@ -450,7 +450,7 @@
                 </ul>
                 
                 <div class="evidence-container">
-                    <h4>Evidencia del Proceso:</h4>
+                    <h4>Evidencia del Proceso (Almacenamiento):</h4>
                     <p><em>Configuración del esquema de almacenamiento estructurado:</em></p>
                     
                     <p class="evidence-desc">
@@ -466,11 +466,25 @@
 
                     <img src="https://raw.githubusercontent.com/d1z1-3/proyecto-final-so-g3/main/docs/images/Particionamiento.jpeg" alt="Captura de particionamiento manual Fedora 44" class="evidence-img">
                 </div>
+                
+                <div class="evidence-container" style="margin-top: 30px;">
+                    <h4>Evidencia del Proceso (Conectividad Segura):</h4>
+                    <p><em>Verificación de la comunicación remota encriptada inter-VM:</em></p>
                     
-                <p style="margin-top: 25px;"><em>Verificación de la comunicación remota encriptada inter-VM:</em></p>
-                <img src="https://raw.githubusercontent.com/d1z1-3/proyecto-final-so-g3/main/docs/images/Acceso_SSH.jpeg" alt="Captura de pantalla acceso SSH verificado" class="evidence-img">
+                    <p class="evidence-desc">
+                        Validación del enlace de red local privado establecido de forma transparente entre ambas instancias virtuales de Fedora 44, auditando los siguientes puntos de control de red:
+                    </p>
+                    
+                    <ul>
+                        <li><strong>Aislamiento de Red:</strong> Ambas interfaces de red virtuales operan bajo un segmento direccionado exclusivo para el intercambio seguro de datos.</li>
+                        <li><strong>Autenticación SSH:</strong> Handshake criptográfico exitoso desde el nodo de administración gráfico hacia la consola del servidor sin requerir interfaces de usuario.</li>
+                        <li><strong>Integridad de Canal:</strong> Cifrado de extremo a extremo activo que protege el canal de comandos de accesos no autorizados en la red interna.</li>
+                    </ul>
 
-                <h4 style="margin-top: 20px;">Comandos:</h4>
+                    <img src="https://raw.githubusercontent.com/d1z1-3/proyecto-final-so-g3/main/docs/images/Acceso_SSH.jpeg" alt="Captura de pantalla acceso SSH verificado" class="evidence-img">
+                </div>
+
+                <h4 style="margin-top: 30px;">Comandos:</h4>
                 <div class="terminal-window">
                     <div class="terminal-header">
                         <div class="terminal-dots">
