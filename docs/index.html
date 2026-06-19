@@ -343,10 +343,6 @@
             font-weight: 600;
         }
 
-        .conclusion-block {
-            margin-bottom: 25px;
-        }
-
         /* Footer Modernizado */
         footer {
             background: linear-gradient(to top, #0f172a, var(--secondary-color));
@@ -380,6 +376,7 @@
         <a href="#home">Home</a>
         <a href="#equipo">Equipo</a>
         <a href="#componentes">Componentes</a>
+        <a href="#arquitectura">Arquitectura</a>
         <a href="#conclusiones">Conclusiones</a>
     </nav>
 
@@ -443,7 +440,6 @@
 
         <section id="componentes">
             <h2>Componentes</h2>
-
             <div class="component-block">
                 <h3>Descripción, capturas y comandos de cada uno</h3>
                 <p style="margin-top: 15px; margin-bottom: 15px;"><strong>Componente 1: Virtualización con Linux</strong></p>
@@ -453,42 +449,33 @@
                     <li><strong>VM Consola:</strong> Servidor Fedora 44 Server configurado sin interfaz para optimización de recursos.</li>
                     <li><strong>Particionamiento:</strong> Estructuración guiada manual del almacenamiento asignando espacios exclusivos para la raíz (<code class="inline">/</code>), el área de intercambio (<code class="inline">swap</code>) y los directorios de usuario (<code class="inline">/home</code>).</li>
                 </ul>
-                
                 <div class="evidence-container">
                     <h4>Evidencia del Proceso (Almacenamiento):</h4>
                     <p><em>Configuración del esquema de almacenamiento de particiones estructurado:</em></p>
-                    
                     <p class="evidence-desc">
                         Configuración de la tabla de particiones bajo el esquema <strong>Utilizar el almacenamiento configurado</strong> para un disco virtual GPT de 21,5 GB (<code class="inline">sda</code>) en Fedora 44, distribuyendo el espacio de la siguiente manera:
                     </p>
-                    
                     <ul>
                         <li><strong>sda1:</strong> 2,10 MB asignados a <code class="inline">biosboot</code> (arranque del sistema).</li>
                         <li><strong>sda2:</strong> 14,0 GB montados en la raíz (<code class="inline">/</code>) para el sistema operativo.</li>
                         <li><strong>sda4:</strong> 5,47 GB reservados para el directorio de usuarios (<code class="inline">/home</code>).</li>
                         <li><strong>sda3:</strong> 2,00 GB asignados como área de intercambio (<code class="inline">swap</code>).</li>
                     </ul>
-
                     <img src="images/Particionamiento.jpeg" alt="Captura de particionamiento manual Fedora 44" class="evidence-img">
                 </div>
-                
                 <div class="evidence-container" style="margin-top: 30px;">
                     <h4>Evidencia del Proceso (Conectividad Segura):</h4>
                     <p><em>Verificación de la comunicación remota encriptada inter-VM:</em></p>
-                    
                     <p class="evidence-desc">
                         Validación del enlace de red local privado establecido de forma transparente entre ambas instancias virtuales de Fedora 44, auditando los siguientes puntos de control de red:
                     </p>
-                    
                     <ul>
                         <li><strong>Aislamiento de Red:</strong> Ambas interfaces de red virtuales operan bajo un segmento direccionado exclusivo para el intercambio seguro de datos.</li>
                         <li><strong>Autenticación SSH:</strong> Handshake criptográfico exitoso desde el nodo de administración gráfico hacia la consola del servidor sin requerir interfaces de usuario.</li>
                         <li><strong>Integridad de Canal:</strong> Cifrado de extremo a extremo activo que protege el canal de comandos de accesos no autorizados en la red interna.</li>
                     </ul>
-
                     <img src="images/Acceso_SSH.jpeg" alt="Captura de pantalla acceso SSH verificado" class="evidence-img">
                 </div>
-
                 <h4 style="margin-top: 30px;">Comandos:</h4>
                 <div class="terminal-window">
                     <div class="terminal-header">
@@ -508,9 +495,7 @@ lsblk</span>
 ssh usuario_servidor@ip_maquina_consola</code></pre>
                 </div>
             </div>
-
             <hr>
-
             <div class="component-block">
                 <p style="margin-bottom: 15px;"><strong>Componente 2: Contenedores Docker</strong></p>
                 <p style="margin-bottom: 15px;">Modularización e instanciación de servicios web desacoplados mediante Docker Engine dentro del servidor gráfico, facilitando la persistencia externa y la vinculación de red interna entre contenedores.</p>
@@ -518,22 +503,18 @@ ssh usuario_servidor@ip_maquina_consola</code></pre>
                     <li><strong>Frontend:</strong> Contenedor Nginx configurado para servir los archivos del portal web estático, expuesto localmente a través del puerto mapeado <code class="inline">8080:80</code>.</li>
                     <li><strong>Backend:</strong> Microservicio HTTP programado en Python, compilado dinámicamente con la imagen base <code class="inline">fedora:44</code> y mapeado internamente en el puerto <code class="inline">5000</code>.</li>
                 </ul>
-                
                 <div class="evidence-container">
                     <h4>Capturas:</h4>
                     <p><em>Orquestación unificada y levantamiento de servicios locales con Docker Compose:</em></p>
                     <p class="evidence-desc">
                         Verificación operacional del estado de los contenedores donde se observa que ambos microservicios (<code class="inline">backend</code> y <code class="inline">frontend</code>) se encuentran activos (<code class="inline">Up</code>) y direccionando de forma correcta los respectivos puertos hacia el host.
                     </p>
-
                     <img src="images/Contenedores.jpeg" alt="Captura de contenedores corriendo en Docker Compose" class="evidence-img">
-                    
                     <p><em>Comprobación de respuestas de red en el navegador:</em></p>
                     <p class="evidence-desc">
                         Acceso exitoso a la interfaz de usuario gráfica de la aplicación final desplegada en el entorno de escritorio local. El panel confirma de forma integrada la lectura fluida de los metadatos del estudiante y el estado de salud del microservicio dinámico de Python.
                     </p>
                     <img src="images/Acceso_Navegador.jpeg" alt="Captura del navegador accediendo al Frontend y Backend" class="evidence-img">
-
                     <h4 style="margin-top: 20px;">Comandos Ejecutados:</h4>
                     <div class="terminal-window">
                         <div class="terminal-header">
@@ -558,9 +539,7 @@ curl http://localhost:5000</code></pre>
                     </div>
                 </div>
             </div>
-
             <hr>
-
             <div class="component-block">
                 <p style="margin-bottom: 15px;"><strong>Componente 3: Orquestación con Kubernetes</strong></p>
                 <p style="margin-bottom: 15px;">Migración e inyección de la lógica técnica hacia un entorno de orquestación empresarial administrado de forma local mediante Minikube, implementando un balanceador de carga integrado.</p>
@@ -572,7 +551,6 @@ curl http://localhost:5000</code></pre>
                         </ul>
                     </li>
                 </ul>
-                
                 <div class="evidence-container">
                     <h4>Capturas:</h4>
                     <p><em>Inspección técnica de los pods activos y asignación de NodePort:</em></p>
@@ -580,13 +558,11 @@ curl http://localhost:5000</code></pre>
                         Validación mediante la terminal del estado operativo de los <code class="inline">pods</code> en el clúster, confirmando la asignación exitosa del puerto de nodo (<code class="inline">NodePort</code>) que permite la comunicación externa con el balanceador de carga configurado.
                     </p>
                     <img src="images/Asignación_Nodeport.jpeg" alt="Captura de kubectl mostrando la asignación de NodePort" class="evidence-img">
-
                     <p><em>Elasticidad e incremento del ecosistema de pods en tiempo real:</em></p>
                     <p class="evidence-desc">
                         Evidencia del despliegue exitoso escalado a tres réplicas del servicio <code class="inline">Nginx</code>, verificando la consistencia y disponibilidad de los <code class="inline">pods</code> dentro del entorno de orquestación local.
                     </p>
                     <img src="images/Incremento_pods.jpeg" alt="Captura que evidencia las 3 réplicas activas" class="evidence-img">
-
                     <h4 style="margin-top: 20px;">Comandos:</h4>
                     <div class="terminal-window">
                         <div class="terminal-header">
@@ -619,15 +595,22 @@ minikube service [nombre-servicio] --url</code></pre>
             </div>
         </section>
 
- <section id="conclusiones">
+        <section id="arquitectura">
+            <h2>Arquitectura</h2>
+            <p>Representación visual del flujo de datos y la infraestructura desplegada, desde la capa de virtualización local hasta la orquestación en el clúster de Kubernetes.</p>
+            <div class="evidence-container">
+                <h4>Diagrama de Arquitectura de Alto Nivel</h4>
+                <p><em>Esquema integral de los componentes, capas de red y servicios desacoplados:</em></p>
+                <img src="images/Diagrama de arquitectura.jpg" alt="Diagrama de arquitectura del proyecto" class="evidence-img">
+            </div>
+        </section>
+
+        <section id="conclusiones">
             <h2>Conclusiones</h2>
-            
             <h3>Aprendizajes</h3>
             <p>Lograr el despliegue con Minikube y mantener las réplicas activas fue el punto de inflexión del trabajo. Entender cómo Kubernetes gestiona la alta disponibilidad, viendo cómo el sistema reacciona para mantener los pods arriba, nos dio una perspectiva clara de lo que significa que un servicio sea realmente estable. Fue un proceso de aprender a dominar las herramientas de orquestación, entendiendo que la robustez del sistema depende de cómo configuramos cada pieza.</p>
-
             <h3>Las dificultades reales</h3>
             <p>Nuestro mayor obstáculo no fue el código en sí, sino la infraestructura física con la que trabajamos. Al tener dispositivos con almacenamiento limitado y recursos muy ajustados para las máquinas virtuales, el proceso se volvió una lucha constante. Muchas veces el despliegue se interrumpía o quedaba a medias simplemente porque el sistema se quedaba sin espacio o se ahogaba por falta de memoria. Esto nos obligó a ser extremadamente cuidadosos y creativos para buscar espacio donde parecía no haberlo, lo que hizo que el proceso fuera mucho más lento y trabajoso de lo que esperábamos. Esa limitación física fue lo que realmente puso a prueba nuestra paciencia y capacidad para resolver problemas sobre la marcha.</p>
-
             <h3>Recomendaciones técnicas</h3>
             <ul>
                 <li><strong>Gestión de recursos (Limit/Requests):</strong> Es indispensable establecer <code class="inline">resources.limits</code> y <code class="inline">resources.requests</code> en los manifiestos YAML. Esto evita que el scheduler de Kubernetes sobreasigne recursos a los pods, previniendo el <em>node pressure</em> o el <em>eviction</em> de contenedores por falta de memoria RAM en entornos con hardware restringido.</li>
