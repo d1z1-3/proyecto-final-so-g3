@@ -8,15 +8,15 @@
 
 | Nombre | Código | Rol |
 |--------|--------|-----|
-| Evelin Xiomara Astudillo Pedroza (XiomaraAP) | 2477871 | Sitio web y Video|
+| Evelin Xiomara Astudillo Pedroza (XiomaraAP) | 2477871 | Sitio web y video|
 | Roony Alejandro Ausecha Lourido (Roony20-2026) | 2477957 | Documentación y Sitio Web |
 | Jhojan Andrés Martínez Peñafiel (Jhojan9343) | 2478060 | Kubernetes / Orquestación |
 | Felipe Ramírez Peñafiel (d1z1-3) | 2478061 | Backend Developer |
 | Paola Andrea Torres Guerra (paolatorres-png) | 2478101 | Video y Sitio Web |
 
-**Grupo asignado:** Grupo 3  
-**Distribución gráfica:** Fedora 44  
-**Distribución consola:** Fedora 44 Server  
+**Grupo asignado:** Grupo 3
+**Distribución gráfica:** Fedora 44
+**Distribución consola:** Fedora 44 Server
 **Imagen Docker base:** fedora:44
 
 ---
@@ -27,17 +27,17 @@ Proyecto enfocado en la implementación de contenedores y despliegue en Kubernet
 ---
 
 ## Estructura del Repositorio
-* `/backend`: código fuente del servidor HTTP en Python (Puerto 5000) y su respectivo Dockerfile de construcción basado en la distribución asignada.
-* `/frontend`: archivos web estáticos de la aplicación y la configuración del servidor Nginx con sus volúmenes persistentes.
-* `/k8s`: manifiestos de configuración de Kubernetes (Deployment y Service) para el despliegue orquestado en Minikube, configuración de 3 réplicas y exposición mediante NodePort.
-* `/docs`: espacio exclusivo para el portal web de documentación técnica publicado en GitHub Pages, evitando conflictos de enrutamiento con los entornos de contenedores.
-* `docker-compose.yml`: archivo de orquestación local multiconteiner para enlazar y validar la comunicación de los servicios de frontend y backend.
+* /backend: código fuente del servidor HTTP en Python (Puerto 5000) y su respectivo Dockerfile de construcción basado en la distribución asignada.
+* /frontend: archivos web estáticos de la aplicación y la configuración del servidor Nginx con sus volúmenes persistentes.
+* /k8s: manifiestos de configuración de Kubernetes (Deployment y Service) para el despliegue orquestado en Minikube, configuración de 3 réplicas y exposición mediante NodePort.
+* /docs: espacio exclusivo para el portal web de documentación técnica publicado en GitHub Pages, evitando conflictos de enrutamiento con los entornos de contenedores.
+* docker-compose.yml: archivo de orquestación local multiconteiner para enlazar y validar la comunicación de los servicios de frontend y backend.
 
 ---
 
 ## Componente 1: Virtualización con Linux
 
-**Distribuciones instaladas:** VM Gráfica + VM Consola  
+**Distribuciones instaladas:** VM Gráfica + VM Consola
 **Herramienta:** VirtualBox / VMware
 
 ### Evidencias
@@ -46,13 +46,30 @@ Proyecto enfocado en la implementación de contenedores y despliegue en Kubernet
 - Captura configuración de red
 - Captura prueba SSH funcional
 
-### Comandos principales
-```bash
-ip a                               # Ver interfaces de red
-lsblk                               # Ver particiones
-ssh usuario@ip_vm_consola           # Conectar por SSH
-```
+![Instalación VM Consola](docs/images/Instalación_VM_consola.jpeg)
+*Vista de la instalación del sistema base en el entorno virtualizado.*
 
+![Particionamiento](docs/images/Particionamiento_verificado_lsblk.jpeg)
+*Validación de discos y particiones mediante el comando lsblk.*
+
+![Adaptador 1](docs/images/Configuración_Adaptador1_Fedora_Gráfico.jpeg)
+*Configuración de red del primer adaptador (Wi-Fi) en la VM gráfica.*
+
+![Adaptador 2](docs/images/Adaptador2_Gráfico.jpeg)
+*Configuración de red del segundo adaptador (Red Interna) en la VM gráfica.*
+
+![Adaptador Server](docs/images/Adaptador_Fedora_Server_Consola.jpeg)
+*Configuración de red de la VM de consola (Fedora Server).*
+
+![Prueba SSH](docs/images/Acceso_SSH.jpeg)
+*Validación de la conectividad remota mediante SSH.*
+
+### Comandos principales
+```
+ip a                               # Ver interfaces de red
+lsblk                              # Ver particiones
+ssh usuario@ip_vm_consola          # Conectar por SSH
+```
 ---
 
 ## Componente 2: Contenedores Docker
@@ -62,19 +79,31 @@ ssh usuario@ip_vm_consola           # Conectar por SSH
 - Backend: Python HTTP (puerto 5000) basado en la distribución asignada.
 
 ### Evidencias
-- Captura `docker compose up -d` (Validación y enlace multicontenedor)
+- Captura docker compose up -d (Validación y enlace multicontenedor)
 - Captura navegador accediendo al frontend
-- Captura `curl http://localhost:5000`
+- Captura curl http://localhost:5000
+
+![Compose Parte 1](docs/images/sudo_compose1.jpeg)
+*Iniciación de la orquestación multicontenedor mediante Docker Compose.*
+
+![Compose Parte 2](docs/images/sudo_compose2.jpeg)
+*Proceso de enlace de servicios y creación de redes virtuales.*
+
+![Contenedores](docs/images/Contenedores.jpeg)
+*Lista de contenedores activos validados tras la ejecución.*
+
+![Acceso Nginx](docs/images/Nginx_Acceso.jpeg)
+*Verificación de carga del sitio web a través de Nginx.*
 
 ### Comandos principales
-```bash
+```
 docker compose up -d
 docker ps
 docker images
 curl http://localhost
 curl http://localhost:5000
 ```
-
+---
 ---
 
 ## Componente 3: Orquestación con Kubernetes
@@ -82,19 +111,25 @@ curl http://localhost:5000
 **Herramienta:** Minikube
 
 ### Manifiestos
-Ubicados en la carpeta `/k8s`:
-- `backend-deployment.yaml` — Configuración optimizada con 3 réplicas para el despliegue orquestado del backend.
-- `frontend-nginx.yaml` — Configuración del despliegue del frontend con Nginx.
+Ubicados en la carpeta /k8s:
+- backend-deployment.yaml — Configuración optimizada con 3 réplicas para el despliegue orquestado del backend.
+- frontend-nginx.yaml — Configuración del despliegue del frontend con Nginx.
 - Exposición mediante NodePort en puerto 30080.
 
 ### Evidencias
-- Captura `kubectl get pods` (Mostrando las 3 réplicas corriendo)
-- Captura `kubectl get svc`
+- Captura kubectl get pods (Mostrando las 3 réplicas corriendo)
+- Captura kubectl get svc
 - Captura acceso desde navegador
 - Captura escalado a 3 réplicas
 
+![Pods](docs/images/Incremento_pods.jpeg)
+*Estado de los pods mostrando las réplicas en ejecución.*
+
+![Service](docs/images/Asignación_Nodeport.jpeg)
+*Verificación de la exposición del servicio mediante NodePort.*
+
 ### Comandos principales
-```bash
+```
 minikube start
 kubectl apply -f k8s/backend-deployment.yaml
 kubectl apply -f k8s/frontend-nginx.yaml
@@ -102,29 +137,26 @@ kubectl get pods
 kubectl get svc
 minikube service [nombre-servicio] --url
 ```
-
 ---
 
 ## Componente 4: Sitio Web de Documentación
 
-**URL del sitio:** [https://d1z1-3.github.io/proyecto-final-so-g3/]  
+**URL del sitio:** [https://d1z1-3.github.io/proyecto-final-so-g3/]
 **Video YouTube:** [https://youtu.be/...]
 
 ### Secciones del sitio
-El portal web técnico está aislado en el directorio `/docs` para evitar conflictos de enrutamiento con los contenedores:
+El portal web técnico está aislado en el directorio /docs para evitar conflictos de enrutamiento con los contenedores:
 - Home: introducción y objetivos
 - Equipo: integrantes con fotos y roles
 - Componentes: descripción, capturas y comandos de cada uno
-- Arquitectura: diagrama de arquitectura del proyecto
 - Conclusiones: aprendizajes, dificultades y recomendaciones
 
 ---
 
 ## Diagrama de Arquitectura
 
-> Insertar imagen del diagrama (draw.io / Miro / Lucidchart) indicando el flujo entre Nginx, el backend en Python y el clúster de Kubernetes.
-
----
+![Diagrama de arquitectura del proyecto](docs/images/Diagrama%20de%20arquitectura.png)
+*Diagrama de arquitectura del proyecto*
 
 ## Conclusiones
 
@@ -142,5 +174,4 @@ Nuestro mayor obstáculo no fue el código en sí, sino la infraestructura físi
 
 ---
 
-*Proyecto desarrollado para la asignatura Sistemas Operativos 750001C — Semestre 1, 2026*
----
+### Proyecto desarrollado para la asignatura Sistemas Operativos 750001C — Semestre 1, 2026
