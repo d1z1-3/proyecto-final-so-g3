@@ -92,8 +92,9 @@ ssh usuario@ip_vm_consola          # Conectar por SSH
 ![Contenedores](docs/images/Contenedores.jpeg)
 *Lista de contenedores activos validados tras la ejecución.*
 
-![Acceso Nginx](docs/images/Nginx_Acceso.jpeg)
-*Verificación de carga del sitio web a través de Nginx.*
+![Acceso Nginx](docs/images/Acceso_Navegador.jpeg)
+
+*Verificación de carga del sitio web, acceso al frontend.*
 
 ### Comandos principales
 ```
@@ -116,7 +117,7 @@ Ubicados en la carpeta /k8s:
 - frontend-nginx.yaml — Configuración del despliegue del frontend con Nginx.
 - Exposición mediante NodePort en puerto 30080.
 
-### Evidencias
+### Evidencias 
 - Captura kubectl get pods (Mostrando las 3 réplicas corriendo)
 - Captura kubectl get svc
 - Captura acceso desde navegador
@@ -127,6 +128,9 @@ Ubicados en la carpeta /k8s:
 
 ![Service](docs/images/Asignación_Nodeport.jpeg)
 *Verificación de la exposición del servicio mediante NodePort.*
+
+![NGINX](docs/images/Nginx_Acceso.jpeg)
+*Nginx iniciado correctamente.*
 
 ### Comandos principales
 ```
