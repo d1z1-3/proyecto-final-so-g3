@@ -147,7 +147,7 @@ minikube service [nombre-servicio] --url
 
 **URL del sitio:** [https://d1z1-3.github.io/proyecto-final-so-g3/]
 
-**Video YouTube:** [https://youtu.be/...]
+**Video YouTube:** [https://youtu.be/ufcUsZkozvM]
 
 ### Secciones del sitio
 El portal web técnico está aislado en el directorio /docs para evitar conflictos de enrutamiento con los contenedores:
