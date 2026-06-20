@@ -8,7 +8,7 @@
 
 | Nombre | Código | Rol |
 |--------|--------|-----|
-| Evelin Xiomara Astudillo Pedroza (XiomaraAP) | 2477871 | Sitio web y video|
+| Evelin Xiomara Astudillo Pedroza (XiomaraAP) | 2477871 | Sitio web y Video|
 | Roony Alejandro Ausecha Lourido (Roony20-2026) | 2477957 | Documentación y Sitio Web |
 | Jhojan Andrés Martínez Peñafiel (Jhojan9343) | 2478060 | Kubernetes / Orquestación |
 | Felipe Ramírez Peñafiel (d1z1-3) | 2478061 | Backend Developer |
@@ -115,6 +115,7 @@ El portal web técnico está aislado en el directorio `/docs` para evitar confli
 - Home: introducción y objetivos
 - Equipo: integrantes con fotos y roles
 - Componentes: descripción, capturas y comandos de cada uno
+- Arquitectura: diagrama de arquitectura del proyecto
 - Conclusiones: aprendizajes, dificultades y recomendaciones
 
 ---
