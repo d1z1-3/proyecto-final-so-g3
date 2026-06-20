@@ -146,6 +146,7 @@ minikube service [nombre-servicio] --url
 ## Componente 4: Sitio Web de Documentación
 
 **URL del sitio:** [https://d1z1-3.github.io/proyecto-final-so-g3/]
+
 **Video YouTube:** [https://youtu.be/...]
 
 ### Secciones del sitio
